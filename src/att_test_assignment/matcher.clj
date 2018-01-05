@@ -15,7 +15,7 @@
 
 (defn- parse-path
   [path-pattern path-regexp path]
-  (let [path-keys (map (comp keyword #(nth % 1))
+  (let [path-keys (map (comp keyword second)
                        (re-seq key-regexp path-pattern))]
     (zipmap path-keys
             (rest (re-matches path-regexp path)))))
